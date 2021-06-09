@@ -20,7 +20,6 @@
 #define TCA9555_VALUE_ERROR     0x83
 #define TCA9555_PORT_ERROR      0x84
 
-
 #define TCA9555_INVALID_READ    -100
 
 

@@ -14,6 +14,8 @@ This experimental library gives easy control over the 16 pins of a TCA9555 chip.
 
 According to the TCA9555 datasheet the interface should also work for the TCA9535
 
+The TCA9555 supports up to 400 kHz I2C.
+
 
 ## Interface
 
@@ -32,8 +34,9 @@ Check the datasheet for details
 
 - **bool pinMode(uint8_t pin, uint8_t mode)**
 - **bool digitalWrite(uint8_t pin, uint8_t value)** pin = 0..15, value = LOW(0) HIGH (!0), returns true if successful.
-- **uint8_t digitalRead(uint8_t pin)** pin = 0..15
-- **bool setPolarity(uint8_t pin, uint8_t value)** inverts polarity of a pin
+- **uint8_t digitalRead(uint8_t pin)** pin = 0..15, returns the value of the pin HIGH or LOW.
+- **bool setPolarity(uint8_t pin, uint8_t value)** inverts polarity of an INPUT pin.
+- **uint8_t getPolarity(uint8_t pin)** returns 1 if a pin is inverted.
 
 
 ### 8 pins interface
@@ -41,7 +44,8 @@ Check the datasheet for details
 - **bool pinMode8(uint8_t pin, uint8_t mode)** set the mode of eight pins in one go.
 - **bool write8(uint8_t port, uint8_t value)** port = 0, 1  value = 0..255, returns true if successful. Especially useful if one needs to trigger multiple pins at the exact same time.
 - **uint8_t read8(uint8_t port)** port = 0, 1, Returns a bit pattern for pins 0..7 or pins 8..15.
-- **bool setPolarity8(uint8_t pin, uint8_t value)** inverts polarity of 8 pins in one action.
+- **bool setPolarity8(uint8_t pin, uint8_t value)** inverts polarity of the 8 INPUT pins in one action.
+- **uint8_t getPolarity(uint8_t pin)** returns a mask with a 1 for every INPUT pin that is inverted.
 
 
 ### Error codes
@@ -55,15 +59,18 @@ Check the datasheet for details
 | TCA9555_I2C_ERROR    |  0x82 |
 | TCA9555_VALUE_ERROR  |  0x83 |
 | TCA9555_PORT_ERROR   |  0x84 |
+| TCA9555_PORT_ERROR   |  0x84 |
+| TCA9555_INVALID_READ |  -100 |
 
 
 ## Future
 
+- buy TCA9555 / TCA9535
 - test all functionality (initial version is written with no hardware around)
 - improve documentation
 - add tests
-- ...
-
+- investigate caching
+- investigate 16 bit interfaces?
 
 
 ## Operation
