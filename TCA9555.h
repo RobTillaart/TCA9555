@@ -54,8 +54,8 @@ public:
   bool    pinMode8(uint8_t port, uint8_t mask);
   bool    write8(uint8_t port, uint8_t mask);
   int     read8(uint8_t port);
-  bool    setPolarity(uint8_t port, uint8_t value);
-  uint8_t getPolarity(uint8_t port);
+  bool    setPolarity8(uint8_t port, uint8_t value);
+  uint8_t getPolarity8(uint8_t port);
 
   int     lastError();
   
