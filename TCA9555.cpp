@@ -175,8 +175,8 @@ bool TCA9555::pinMode8(uint8_t port, uint8_t mask)
     return false;
   }
   _error = TCA9555_OK;
-  if (port == 0) return writeRegister(TCA9555_CONFIGURATION_PORT_0. mask);
-  if (port == 1) return writeRegister(TCA9555_CONFIGURATION_PORT_1. mask);
+  if (port == 0) return writeRegister(TCA9555_CONFIGURATION_PORT_0, mask);
+  if (port == 1) return writeRegister(TCA9555_CONFIGURATION_PORT_1, mask);
   return false;
 }
 
@@ -203,8 +203,8 @@ int TCA9555::read8(uint8_t port)
     return TCA9555_INVALID_READ;
   }
   _error = TCA9555_OK;
-  if (port == 0) return readRegister(TCA9555_OUTPUT_PORT_REGISTER_0);
-  if (port == 1) return readRegister(TCA9555_OUTPUT_PORT_REGISTER_1);
+  if (port == 0) return readRegister(TCA9555_INPUT_PORT_REGISTER_0);
+  if (port == 1) return readRegister(TCA9555_INPUT_PORT_REGISTER_1);
   return 0; // keeps compiler happy
 }
 
