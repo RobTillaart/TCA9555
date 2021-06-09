@@ -12,7 +12,7 @@
 #include "Wire.h"
 
 
-#define TCA9555_LIB_VERSION    (F("0.2.3"))
+#define TCA9555_LIB_VERSION    (F("0.1.0"))
 
 #define TCA9555_OK              0x00
 #define TCA9555_PIN_ERROR       0x81
@@ -37,16 +37,23 @@ public:
   bool    isConnected();
 
 
-  // single pin interface
+  //  single pin interface
+  //  pin    = 0..15
+  //  mode  = INPUT, OUTPUT
+  //  value = LOW, HIGH
+  bool    pinMode(uint8_t pin, uint8_t mode);
   bool    digitalWrite(uint8_t pin, uint8_t value);
   uint8_t digitalRead(uint8_t pin);
+  bool    setPolarity(uint8_t pin, uint8_t value);
 
 
-  // 8 pins interface
-  // port  = 0..1
-  // value = bitpattern
-  bool    write8(uint8_t port, uint8_t value);
+  //  8 pins interface
+  //  port  = 0..1
+  //  mask  = bitpattern
+  bool    pinMode8(uint8_t port, uint8_t mask);
+  bool    write8(uint8_t port, uint8_t mask);
   int     read8(uint8_t port);
+  bool    setPolarity8(uint8_t port, uint8_t mask);
 
   int     lastError();
   

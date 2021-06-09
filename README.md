@@ -10,10 +10,12 @@ Arduino library for TCA9555 16 channel I2C port expander
 
 ## Description
 
-This library gives easy control over the 16 pins of a TCA9555 chip.
+This experimental library gives easy control over the 16 pins of a TCA9555 chip.
 
 
 ## Interface
+
+Check the datasheet for details
 
 ### Constructor
 
@@ -25,14 +27,18 @@ This library gives easy control over the 16 pins of a TCA9555 chip.
 
 ### single pin interface
 
+- **bool pinMode(uint8_t pin, uint8_t mode)**
 - **bool digitalWrite(uint8_t pin, uint8_t value)** pin = 0..15, value = LOW(0) HIGH (!0), returns true if successful.
 - **uint8_t digitalRead(uint8_t pin)** pin = 0..15
+- **bool setPolarity(uint8_t pin, uint8_t value)** inverts polarity of a pin
 
 
 ### 8 pins interface
 
-- **bool write8(uint8_t port, uint8_t value)** port = 0, 1  value = 0..255, returns true if successful.
-- **uint8_t read8(uint8_t port)** port = 0, 1
+- **bool pinMode8(uint8_t pin, uint8_t mode)** set the mode of eight pins in one go.
+- **bool write8(uint8_t port, uint8_t value)** port = 0, 1  value = 0..255, returns true if successful. Especially useful if one needs to trigger multiple pins at the exact same time.
+- **uint8_t read8(uint8_t port)** port = 0, 1, Returns a bit pattern for pins 0..7 or pins 8..15.
+- **bool setPolarity8(uint8_t pin, uint8_t value)** inverts polarity of 8 pins in one action.
 
 
 ### Error codes
@@ -50,9 +56,10 @@ This library gives easy control over the 16 pins of a TCA9555 chip.
 
 ## Future
 
-- set pull up
-- polarity inversion register
+- improve documentation
+- add tests
 - ...
+
 
 
 ## Operation
