@@ -12,10 +12,13 @@ Arduino library for TCA9555 16 channel I2C port expander
 
 This experimental library gives easy control over the 16 pins of a TCA9555 chip.
 
+According to the TCA9555 datasheet the interface should also work for the TCA9535
+
 
 ## Interface
 
 Check the datasheet for details
+
 
 ### Constructor
 
@@ -56,6 +59,7 @@ Check the datasheet for details
 
 ## Future
 
+- test all functionality (initial version is written with no hardware around)
 - improve documentation
 - add tests
 - ...

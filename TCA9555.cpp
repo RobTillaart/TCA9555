@@ -14,13 +14,13 @@
 
 
 // REGISTERS
-#define TCA9555_INPUT_PORT_REGISTER_0     0x00
+#define TCA9555_INPUT_PORT_REGISTER_0     0x00    // read()
 #define TCA9555_INPUT_PORT_REGISTER_1     0x01
-#define TCA9555_OUTPUT_PORT_REGISTER_0    0x02
+#define TCA9555_OUTPUT_PORT_REGISTER_0    0x02    // write()
 #define TCA9555_OUTPUT_PORT_REGISTER_1    0x03
-#define TCA9555_POLARITY_REGISTER_0       0x04
+#define TCA9555_POLARITY_REGISTER_0       0x04    // get/setPolarity
 #define TCA9555_POLARITY_REGISTER_1       0x05
-#define TCA9555_CONFIGURATION_PORT_0      0x06
+#define TCA9555_CONFIGURATION_PORT_0      0x06    // pinMode
 #define TCA9555_CONFIGURATION_PORT_1      0x07
 
 
@@ -148,6 +148,25 @@ bool TCA9555::setPolarity(uint8_t pin, uint8_t value)   // pin = 0..15
 }
 
 
+uint8_t TCA9555::getPolarity(uint8_t pin)
+{
+  if (pin > 15)
+  {
+    _error = TCA9555_PIN_ERROR;
+    return false;
+  }
+  uint8_t POLREG = TCA9555_POLARITY_REGISTER_0;
+  if (pin > 7) POLREG = TCA9555_POLARITY_REGISTER_1;
+  _error = TCA9555_OK;
+  uint8_t mask = readRegister(POLREG);
+  return (mask >> pin) == 0x01;
+}
+
+
+
+//////////////////////////////////////////////////////////
+
+
 bool TCA9555::pinMode8(uint8_t pin, uint8_t mask)
 {
   if (pin > 15)
@@ -199,7 +218,7 @@ int TCA9555::read8(uint8_t port)
 }
 
 
-bool TCA9555::setPolarity8(uint8_t port, uint8_t mask)   // pin = 0..15
+bool TCA9555::setPolarity8(uint8_t port, uint8_t mask)
 {
   if (port > 1)
   {
@@ -207,18 +226,24 @@ bool TCA9555::setPolarity8(uint8_t port, uint8_t mask)   // pin = 0..15
     return false;
   }
   uint8_t POLREG = TCA9555_POLARITY_REGISTER_0;
-  if (pin > 7)
-  {
-    POLREG = TCA9555_POLARITY_REGISTER_1;
-    pin -= 8;
-  }
-  uint8_t value = readRegister(POLREG);
-  uint8_t mask = 1 << pin;
-  if (value == LOW)  value &= ~mask;
-  else value |= mask;
-  writeRegister(POLREG, value);
+  if (port == 1) POLREG = TCA9555_POLARITY_REGISTER_1;
+  writeRegister(POLREG, mask);
   _error = TCA9555_OK;
   return true;
+}
+
+
+uint8_t TCA9555::getPolarity8(uint8_t port)
+{
+  if (port > 1)
+  {
+    _error = TCA9555_PORT_ERROR;
+    return false;
+  }
+  uint8_t POLREG = TCA9555_POLARITY_REGISTER_0;
+  if (port == 1) POLREG = TCA9555_POLARITY_REGISTER_1;
+  _error = TCA9555_OK;
+  return readRegister(POLREG);
 }
 
 

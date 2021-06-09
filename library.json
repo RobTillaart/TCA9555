@@ -1,7 +1,7 @@
 {
   "name": "TCA9555",
-  "keywords": "TCA9555,I2C, 16 IO",
-  "description": "Arduino library for I2C TCA9555 16 channel port expander",
+  "keywords": "TCA9555,I2C, 16 IO, TCA9535",
+  "description": "Arduino library for I2C TCA9555 16 channel port expander\nShould also work for TCA9535 (not tested)",
   "authors":
   [
     {

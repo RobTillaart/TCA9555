@@ -45,6 +45,7 @@ public:
   bool    digitalWrite(uint8_t pin, uint8_t value);
   uint8_t digitalRead(uint8_t pin);
   bool    setPolarity(uint8_t pin, uint8_t value);
+  uint8_t getPolarity(uint8_t pin);
 
 
   //  8 pins interface
@@ -53,7 +54,8 @@ public:
   bool    pinMode8(uint8_t port, uint8_t mask);
   bool    write8(uint8_t port, uint8_t mask);
   int     read8(uint8_t port);
-  bool    setPolarity8(uint8_t port, uint8_t mask);
+  bool    setPolarity(uint8_t port, uint8_t value);
+  uint8_t getPolarity(uint8_t port);
 
   int     lastError();
   
