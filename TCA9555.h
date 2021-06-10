@@ -26,7 +26,7 @@
 class TCA9555
 {
 public:
-  TCA9555(uint8_t addr, TwoWire *wire = &Wire);
+  TCA9555(uint8_t address, TwoWire *wire = &Wire);
 
 
 #if defined(ESP8266) || defined(ESP32)
@@ -38,12 +38,12 @@ public:
 
   //  1 PIN INTERFACE
   //  pin    = 0..15
-  //  mode  = INPUT, OUTPUT
+  //  mode  = INPUT, OUTPUT       (INPUT_PULLUP is not supported)
   //  value = LOW, HIGH
   bool     pinMode(uint8_t pin, uint8_t mode);
   bool     digitalWrite(uint8_t pin, uint8_t value);
   uint8_t  digitalRead(uint8_t pin);
-  bool     setPolarity(uint8_t pin, uint8_t value);
+  bool     setPolarity(uint8_t pin, uint8_t value);    // input pins only.
   uint8_t  getPolarity(uint8_t pin);
 
 
@@ -58,8 +58,9 @@ public:
 
 
   //  16 PIN INTERFACE
-  //  oportunistic implementation of functions
-  //  needs error checking in between?
+  //  wraps 2x 8 PIN call.
+  //  opportunistic implementation of functions
+  //  needs error checking in between calls
   
   //  mask  = bitpattern
   bool     pinMode16(uint16_t mask);
@@ -71,7 +72,7 @@ public:
 
   int      lastError();
 
-private:
+protected:
   bool     writeRegister(uint8_t reg, uint8_t value);
   uint8_t  readRegister(uint8_t reg);
 
@@ -80,4 +81,9 @@ private:
   uint8_t   _error;
 };
 
+
+class TCA9535 : TCA9555
+{
+  TCA9535(uint8_t address, TwoWire *wire = &Wire) : TCA9555(address, wire);
+}
 // -- END OF FILE --

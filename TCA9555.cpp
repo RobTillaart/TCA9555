@@ -70,6 +70,11 @@ bool TCA9555::pinMode(uint8_t pin, uint8_t mode)
     _error = TCA9555_PIN_ERROR;
     return false;
   }
+  if ( (mode != INPUT) && (mode != OUTPUT)
+  {
+    _error = TCA9555_VALUE_ERROR;
+    return false;
+  }
   uint8_t CONFREG = TCA9555_CONFIGURATION_PORT_0;
   if (pin > 7)
   {

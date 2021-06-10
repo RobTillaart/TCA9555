@@ -12,9 +12,12 @@ Arduino library for TCA9555 16 channel I2C port expander
 
 This experimental library gives easy control over the 16 pins of a TCA9555 chip.
 
-According to the TCA9555 datasheet the interface should also work for the TCA9535
-
 The TCA9555 supports up to 400 kHz I2C.
+
+The TCA9535 is identical to the TCA9555, except that the TCA9535 does not include the internal I/O
+pull-up resistor, which requires pull-ups and pulldowns on unused I/O pins when configured as an
+input and undriven.
+
 
 
 ## Interface
