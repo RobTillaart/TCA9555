@@ -350,7 +350,7 @@ uint8_t TCA9555::readRegister(uint8_t reg)
 //
 // TCA9535
 // 
-TCA9535::TCA9535(uint8_t address, TwoWire *wire = &Wire)
+TCA9535::TCA9535(uint8_t address, TwoWire *wire)
         :TCA9555(address, wire)
 {
 }

@@ -19,6 +19,8 @@ _The TCA9535 is identical to the TCA9555, except that the TCA9535 does not inclu
 pull-up resistor, which requires pull-ups and pulldowns on unused I/O pins when configured as an
 input and undriven. This reduces power consumption when the I/Os are held low._
 
+There is a TCA9535 class which is a (convenience) wrapper around the TCA9555 class. 
+This allows one to create TCA9535 objects. 
 
 
 ## Interface
@@ -29,12 +31,15 @@ Check the datasheet for details
 ### Constructor
 
 - **TCA9555(uint8_t address, TwoWire \*wire = &Wire)** constructor, with default Wire interface. Can be overruled with Wire0..WireN
+- **TCA9535(uint8_t address, TwoWire \*wire = &Wire)** idem
+
+
 - **bool begin()** for UNO, returns true if successful
 - **bool begin(uint8_t sda, uint8_t scl)** for ESP32, returns true if successful
 - **bool isConnected()** returns true if connected, false otherwise
 
 
-### single pin interface
+### 1 pin interface
 
 - **bool pinMode(uint8_t pin, uint8_t mode)**
 - **bool digitalWrite(uint8_t pin, uint8_t value)** pin = 0..15, value = LOW(0) HIGH (!0), returns true if successful.
@@ -43,7 +48,7 @@ Check the datasheet for details
 - **uint8_t getPolarity(uint8_t pin)** returns 1 if a pin is inverted.
 
 
-### 8 pins interface
+### 8 pin interface
 
 port = 0..1  
 mask = 0..255
@@ -55,7 +60,7 @@ mask = 0..255
 - **uint8_t getPolarity(uint8_t port)** returns a mask with a 1 for every INPUT pin that is inverted.
 
 
-### 16 pins interface
+### 16 pin interface
 
 Be aware that the 16 pins interface does two calls to the 8 pins interface. So it is impossible to switch pins from the 2 groups of 8 at exactly the same time (without additional hardware).
 
@@ -77,16 +82,18 @@ Be aware that the 16 pins interface does two calls to the 8 pins interface. So i
 | TCA9555_I2C_ERROR    |  0x82 |
 | TCA9555_VALUE_ERROR  |  0x83 |
 | TCA9555_PORT_ERROR   |  0x84 |
-| TCA9555_PORT_ERROR   |  0x84 |
 | TCA9555_INVALID_READ |  -100 |
 
 
 ## Future
 
-- buy TCA9555 / TCA9535
+#### Must
 - test all functionality (initial version is written with no hardware around)
-- add tests
-- 
+- add TCA9535 error codes
+
+#### Could
+- buy TCA9555 / TCA9535
+- rethink class hierarchy?
 
 
 ## Operation
