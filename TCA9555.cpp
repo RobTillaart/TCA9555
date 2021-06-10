@@ -249,7 +249,7 @@ uint8_t TCA9555::getPolarity8(uint8_t port)
 //
 
 
-bool TCA9555::pinMode8(uint16_t mask)
+bool TCA9555::pinMode16(uint16_t mask)
 {
   bool b = true;
   b &= pinMode8(0, mask & 0xFF);
