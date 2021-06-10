@@ -76,14 +76,20 @@ protected:
   bool     writeRegister(uint8_t reg, uint8_t value);
   uint8_t  readRegister(uint8_t reg);
 
-  uint8_t   _addr;
+  uint8_t   _address;
   TwoWire*  _wire;
   uint8_t   _error;
 };
 
 
-class TCA9535 : TCA9555
+/////////////////////////////////////////////////////////////////////////////
+//
+// TCA9535 class which is just a wrapper (for now)
+// 
+class TCA9535 : public TCA9555
 {
-  TCA9535(uint8_t address, TwoWire *wire = &Wire) : TCA9555(address, wire);
+  TCA9535(uint8_t address, TwoWire *wire = &Wire);
 }
+
+
 // -- END OF FILE --

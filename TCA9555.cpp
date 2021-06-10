@@ -25,11 +25,11 @@
 #define TCA9555_CONFIGURATION_PORT_1      0x07
 
 
-TCA9555::TCA9555(uint8_t addr, TwoWire *wire)
+TCA9555::TCA9555(uint8_t address, TwoWire *wire)
 {
-  _addr  = addr;
-  _wire  = wire;
-  _error = TCA9555_OK;
+  _address = address;
+  _wire    = wire;
+  _error   = TCA9555_OK;
 }
 
 
@@ -54,7 +54,7 @@ bool TCA9555::begin()
 
 bool TCA9555::isConnected()
 {
-  _wire->beginTransmission(_addr);
+  _wire->beginTransmission(_address);
   return (_wire->endTransmission() == 0);
 }
 
@@ -258,7 +258,7 @@ bool TCA9555::pinMode16(uint16_t mask)
 {
   bool b = true;
   b &= pinMode8(0, mask & 0xFF);
-  b &= pinmode8(1, mask >> 8);
+  b &= pinMode8(1, mask >> 8);
   return b;
 }
 
@@ -314,7 +314,7 @@ int TCA9555::lastError()
 
 bool TCA9555::writeRegister(uint8_t reg, uint8_t value)
 {
-  _wire->beginTransmission(_addr);
+  _wire->beginTransmission(_address);
   _wire->write(reg);
   _wire->write(value);
   if (_wire->endTransmission() != 0)
@@ -329,7 +329,7 @@ bool TCA9555::writeRegister(uint8_t reg, uint8_t value)
 
 uint8_t TCA9555::readRegister(uint8_t reg)
 {
-  _wire->beginTransmission(_addr);
+  _wire->beginTransmission(_address);
   _wire->write(reg);
   int rv = _wire->endTransmission();
   if (rv != 0)
@@ -341,9 +341,18 @@ uint8_t TCA9555::readRegister(uint8_t reg)
   {
     _error = TCA9555_OK;
   }
-  _wire->requestFrom(_addr, (uint8_t)1);
+  _wire->requestFrom(_address, (uint8_t)1);
   return _wire->read();
 }
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TCA9535
+// 
+TCA9535::TCA9535(uint8_t address, TwoWire *wire = &Wire)
+        :TCA9555(address, wire)
+{
+}
 
 // -- END OF FILE --
