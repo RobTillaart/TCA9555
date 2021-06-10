@@ -41,11 +41,25 @@ Check the datasheet for details
 
 ### 8 pins interface
 
-- **bool pinMode8(uint8_t pin, uint8_t mode)** set the mode of eight pins in one go.
-- **bool write8(uint8_t port, uint8_t value)** port = 0, 1  value = 0..255, returns true if successful. Especially useful if one needs to trigger multiple pins at the exact same time.
-- **uint8_t read8(uint8_t port)** port = 0, 1, Returns a bit pattern for pins 0..7 or pins 8..15.
-- **bool setPolarity8(uint8_t pin, uint8_t value)** inverts polarity of the 8 INPUT pins in one action.
-- **uint8_t getPolarity(uint8_t pin)** returns a mask with a 1 for every INPUT pin that is inverted.
+port = 0..1  
+mask = 0..255
+
+- **bool pinMode8(uint8_t port, uint8_t mask)** set the mode of eight pins in one call.
+- **bool write8(uint8_t port, uint8_t mask)** returns true if successful. Especially useful if one needs to trigger multiple pins at the exact same time.
+- **uint8_t read8(uint8_t port)** returns a bit pattern for pins 0..7 or pins 8..15.
+- **bool setPolarity8(uint8_t port, uint8_t mask)** inverts polarity of the 8 INPUT pins in one action.
+- **uint8_t getPolarity(uint8_t port)** returns a mask with a 1 for every INPUT pin that is inverted.
+
+
+### 16 pins interface
+
+Be aware that the 16 pins interface does two calls to the 8 pins interface. So it is impossible to switch pins from the 2 groups of 8 at exactly the same time (without additional hardware).
+
+- **bool pinMode16(uint16_t mask)** set the mode of sixteen pins in one call. 
+- **bool write16(uint16_t mask)**  mask = 0x0000 .. 0xFFFF, returns true if successful.
+- **uint16_t read16()** Returns a bit pattern for pins 0..15.
+- **bool setPolarity16(uint16_t mask)** inverts polarity of the 8 INPUT pins in one action. Returns true upon success.
+- **uint16_t getPolarity()** returns a mask of 16 bits with a 1 for every INPUT pin that is inverted.
 
 
 ### Error codes
@@ -67,10 +81,8 @@ Check the datasheet for details
 
 - buy TCA9555 / TCA9535
 - test all functionality (initial version is written with no hardware around)
-- improve documentation
 - add tests
-- investigate caching
-- investigate 16 bit interfaces?
+- 
 
 
 ## Operation

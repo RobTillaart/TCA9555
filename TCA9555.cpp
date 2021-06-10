@@ -1,13 +1,14 @@
 //
 //    FILE: TCA9555.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.1.0
+// VERSION: 0.1.1
 // PURPOSE: Arduino library for I2C TCA9555 16 channel port expander
 //    DATE: 2021-06-09
 //     URL: https://github.com/RobTillaart/TCA9555
 //
 //  HISTORY:
 //  0.1.0   2021-06-09  initial version
+//  0.1.1   2021-06-10  add 16 bit interface
 
 
 #include "TCA9555.h"
@@ -58,6 +59,10 @@ bool TCA9555::isConnected()
 }
 
 
+//////////////////////////////////////////////////////////
+//
+// 1 PIN INTERFACE
+//
 bool TCA9555::pinMode(uint8_t pin, uint8_t mode)
 {
   if (pin > 15)
@@ -165,8 +170,9 @@ uint8_t TCA9555::getPolarity(uint8_t pin)
 
 
 //////////////////////////////////////////////////////////
-
-
+//
+// 8 PIN INTERFACE
+//
 bool TCA9555::pinMode8(uint8_t port, uint8_t mask)
 {
   if (port > 1)
@@ -234,6 +240,57 @@ uint8_t TCA9555::getPolarity8(uint8_t port)
   if (port == 0) return readRegister(TCA9555_POLARITY_REGISTER_0);
   if (port == 1) return readRegister(TCA9555_POLARITY_REGISTER_1);
   return 0; // keeps compiler happy
+}
+
+
+//////////////////////////////////////////////////////////
+//
+// 16 PIN INTERFACE
+//
+
+
+bool TCA9555::pinMode8(uint16_t mask)
+{
+  bool b = true;
+  b &= pinMode8(0, mask & 0xFF);
+  b &= pinmode8(1, mask >> 8);
+  return b;
+}
+
+
+bool TCA9555::write16(uint16_t mask)
+{
+  bool b = true;
+  b &= write8(0, mask & 0xFF);
+  b &= write8(1, mask >> 8);
+  return b;
+}
+
+
+uint16_t TCA9555::read16()
+{
+  uint16_t rv = 0;
+  rv |= (read8(1) << 8);
+  rv |= read8(0);
+  return rv;
+}
+
+
+bool TCA9555::setPolarity16(uint16_t mask)
+{
+  bool b = true;
+  b &= setPolarity8(0, mask & 0xFF);
+  b &= setPolarity8(1, mask >> 8);
+  return b;
+}
+
+
+uint8_t TCA9555::getPolarity16()
+{
+    uint16_t rv = 0;
+  rv |= (getPolarity8(1) << 8);
+  rv |= getPolarity8(0);
+  return rv;
 }
 
 
