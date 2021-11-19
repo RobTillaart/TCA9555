@@ -49,7 +49,7 @@ public:
 
   //  8 PIN INTERFACE
   //  port  = 0..1
-  //  mask  = bitpattern
+  //  mask  = bit pattern
   bool     pinMode8(uint8_t port, uint8_t mask);
   bool     write8(uint8_t port, uint8_t mask);
   int      read8(uint8_t port);
@@ -62,7 +62,7 @@ public:
   //  opportunistic implementation of functions
   //  needs error checking in between calls
   
-  //  mask  = bitpattern
+  //  mask  = bit pattern
   bool     pinMode16(uint16_t mask);
   bool     write16(uint16_t mask);
   uint16_t read16();
