@@ -117,12 +117,4 @@ See examples
 - buy TCA9555 / TCA9535
 - rethink class hierarchy?
 - investigate internal pull up etc.
-<<<<<<< HEAD
-=======
-
-
-## Operation
-
-See examples
->>>>>>> 346dd20544c1fb947585ecb2ddbfad2c9a4a449d
 
