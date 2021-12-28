@@ -8,7 +8,7 @@
 
 # TCA9555
 
-Arduino library for TCA9555 16 channel I2C port expander
+Arduino library for TCA9555 16 channel I2C port expander.
 
 
 ## Description
@@ -98,21 +98,23 @@ Reading it will reset the flag to **TCA9555_OK**.
 | TCA9555_INVALID_READ |  -100 |
 
 
+## Operation
+
+See examples
+
+
 ## Future
 
 
 #### Must
+
 - test all functionality (initial version is written with no hardware around)
 - add TCA9535 error codes
 
 
 #### Could
+
 - buy TCA9555 / TCA9535
 - rethink class hierarchy?
 - investigate internal pull up etc.
-
-
-## Operation
-
-See examples
 
