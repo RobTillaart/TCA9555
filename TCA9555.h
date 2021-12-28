@@ -61,7 +61,6 @@ public:
   //  wraps 2x 8 PIN call.
   //  opportunistic implementation of functions
   //  needs error checking in between calls
-
   //  mask  = bit pattern
   bool     pinMode16(uint16_t mask);
   bool     write16(uint16_t mask);
@@ -93,3 +92,4 @@ class TCA9535 : public TCA9555
 
 
 // -- END OF FILE --
+
