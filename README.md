@@ -29,6 +29,12 @@ input and not driven. This reduces power consumption when the I/O is held low._
 There is a TCA9535 class which is a (convenience) wrapper around the TCA9555 class. 
 This allows one to create TCA9535 objects. 
 
+## Hardware
+
+#### I2C addresses
+
+Allowed addresses are 0x20..0x27. to be set with pin A0, A1, A2.
+
 
 ## Interface
 
@@ -38,8 +44,7 @@ Check the datasheet for details
 #include "TCA9555.h"
 ```
 
-
-### Constructor
+#### Constructor
 
 - **TCA9555(uint8_t address, TwoWire \*wire = &Wire)** constructor, with default Wire interface. 
 Can be overruled with Wire0..WireN.
@@ -52,7 +57,7 @@ Can be overruled with Wire0..WireN.
 - **uint8_t getAddress()** returns set address, (debugging).
 
 
-### 1 pin interface
+#### 1 pin interface
 
 - **bool pinMode(uint8_t pin, uint8_t mode)** idem.
 - **bool digitalWrite(uint8_t pin, uint8_t value)** pin = 0..15, value = LOW(0) HIGH (!0), returns true if successful.
@@ -61,7 +66,7 @@ Can be overruled with Wire0..WireN.
 - **uint8_t getPolarity(uint8_t pin)** returns 1 if a pin is inverted.
 
 
-### 8 pin interface
+#### 8 pin interface
 
 port = 0..1  
 mask = 0..255
@@ -74,7 +79,7 @@ Especially useful if one needs to trigger multiple pins at the exact same time.
 - **uint8_t getPolarity(uint8_t port)** returns a mask with a 1 for every INPUT pin that is inverted.
 
 
-### 16 pin interface
+#### 16 pin interface
 
 Be aware that the 16 pins interface does two calls to the 8 pins interface. 
 So it is impossible to switch pins from the 2 groups of 8 at exactly the same time 
@@ -88,7 +93,7 @@ Returns true upon success.
 - **uint16_t getPolarity()** returns a mask of 16 bits with a 1 for every INPUT pin that is inverted.
 
 
-### Error codes
+#### Error codes
 
 - **int lastError()** Above functions set an error flag that can be read with this function. 
 Reading it will reset the flag to **TCA9555_OK**.
