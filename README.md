@@ -34,16 +34,22 @@ This allows one to create TCA9535 objects.
 
 Check the datasheet for details
 
+```cpp
+#include "TCA9555.h"
+```
+
 
 ### Constructor
 
-- **TCA9555(uint8_t address, TwoWire \*wire = &Wire)** constructor, with default Wire interface. Can be overruled with Wire0..WireN.
+- **TCA9555(uint8_t address, TwoWire \*wire = &Wire)** constructor, with default Wire interface. 
+Can be overruled with Wire0..WireN.
 - **TCA9535(uint8_t address, TwoWire \*wire = &Wire)** idem.
 
 
 - **bool begin()** for UNO, returns true if successful.
 - **bool begin(uint8_t sda, uint8_t scl)** for ESP32, returns true if successful.
 - **bool isConnected()** returns true if connected, false otherwise.
+- **uint8_t getAddress()** returns set address, (debugging).
 
 
 ### 1 pin interface
@@ -88,14 +94,14 @@ Returns true upon success.
 Reading it will reset the flag to **TCA9555_OK**.
 
 
-| DESCRIPTION          | VALUE |
-|:---------------------|:-----:|
-| TCA9555_OK           |  0x00 |
-| TCA9555_PIN_ERROR    |  0x81 |
-| TCA9555_I2C_ERROR    |  0x82 |
-| TCA9555_VALUE_ERROR  |  0x83 |
-| TCA9555_PORT_ERROR   |  0x84 |
-| TCA9555_INVALID_READ |  -100 |
+|  Description           |  Value  |
+|:-----------------------|:-------:|
+|  TCA9555_OK            |  0x00   |
+|  TCA9555_PIN_ERROR     |  0x81   |
+|  TCA9555_I2C_ERROR     |  0x82   |
+|  TCA9555_VALUE_ERROR   |  0x83   |
+|  TCA9555_PORT_ERROR    |  0x84   |
+|  TCA9555_INVALID_READ  |  -100   |
 
 
 ## Operation
@@ -107,17 +113,31 @@ See examples
 
 
 #### Must
+
 - buy TCA9555 / TCA9535
 - test all functionality (initial version is written with no hardware around)
 
+
 #### Should
-- INPUT_PULLUP mappen op INPUT (pinMode ?)
+
+- investigate map INPUT_PULLUP on INPUT (pinMode ?)
 - investigate internal pull up etc.
-- add TCA9535 error codes
 - investigate TCA9535 differences
-  - elaborate derived class 
+  - pull up resistors
+  - elaborate derived class
+- add **getType()** to distinguish derived classes.
+  - int or uint8_t => 4 or 2 digits, define?
+  - or even a string (no)?
+  - constructor
+
 
 #### Could
+
 - rethink class hierarchy
+  -5535 has less functions so should be base class?
+- valid address range?
 
 
+#### Wont (unless)
+- add TCA9535 error codes
+  - better reuse them?
