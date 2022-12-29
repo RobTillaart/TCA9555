@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - update examples
 - add **getAddress()** (debugging)
 - update readme.md
+- update GitHub actions -> v3
 
 
 ## [0.1.3] - 2022-11-25
