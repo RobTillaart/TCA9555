@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.1.5] - 2022-12-30
 - add pin numbers TCA_P00 -- TCA_P17
-- add **uint8_t getType()**
+- add **uint8_t getType()** + example
+- update unit test
 
 
 ## [0.1.4] - 2022-12-29

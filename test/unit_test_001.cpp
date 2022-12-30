@@ -54,6 +54,7 @@ unittest(test_constructor_TCA9555)
 
   assertTrue(TCA.begin());
   assertTrue(TCA.isConnected());
+  assertEqual(55, TCA.getType());
 }
 
 
@@ -63,6 +64,7 @@ unittest(test_constructor_TCA9535)
 
   assertTrue(TCA.begin());
   assertTrue(TCA.isConnected());
+  assertEqual(35, TCA.getType());
 }
 
 
