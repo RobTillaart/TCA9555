@@ -23,6 +23,29 @@
 #define TCA9555_INVALID_READ              -100
 
 
+#if !defined(TCA9555_PIN_NAMES)
+#define TCA9555_PIN_NAMES
+
+  #define TCA_P00         0
+  #define TCA_P01         1
+  #define TCA_P02         2
+  #define TCA_P03         3
+  #define TCA_P04         4
+  #define TCA_P05         5
+  #define TCA_P06         6
+  #define TCA_P07         7
+  #define TCA_P10         8
+  #define TCA_P11         9
+  #define TCA_P12         10
+  #define TCA_P13         11
+  #define TCA_P14         12
+  #define TCA_P15         13
+  #define TCA_P16         14
+  #define TCA_P17         15
+
+#endif
+
+
 class TCA9555
 {
 public:
