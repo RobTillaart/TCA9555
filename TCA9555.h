@@ -94,6 +94,8 @@ public:
 
 
   int      lastError();
+  uint8_t  getType();
+
 
 protected:
   bool     writeRegister(uint8_t reg, uint8_t value);

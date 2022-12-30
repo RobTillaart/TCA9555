@@ -308,6 +308,12 @@ int TCA9555::lastError()
 }
 
 
+uint8_t TCA9555::getType()
+{
+  return _type;
+}
+
+
 ////////////////////////////////////////////////////
 //
 //  PRIVATE
