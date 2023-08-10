@@ -47,9 +47,11 @@ Check the datasheet for details
 
 #### Constructor
 
-- **TCA9555(uint8_t address, TwoWire \*wire = &Wire)** constructor, with default Wire interface. 
+- **TCA9555(uint8_t address, TwoWire \*wire = &Wire)** constructor, with default Wire interface.
 Can be overruled with Wire0..WireN.
+- **TCA9555()** blank constructor. This should only be used as a placeholder for an object created with the above constructor.
 - **TCA9535(uint8_t address, TwoWire \*wire = &Wire)** idem.
+- **TCA9535()** blank constructor. This should only be used as a placeholder for an object created with the above constructor.
 - **uint8_t getType()** returns 35 or 55 depending on type.
 
 
