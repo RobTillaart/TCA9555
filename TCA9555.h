@@ -49,6 +49,7 @@
 class TCA9555
 {
 public:
+  TCA9555();
   TCA9555(uint8_t address, TwoWire *wire = &Wire);
 
 
@@ -115,9 +116,9 @@ protected:
 class TCA9535 : public TCA9555
 {
 public:
+  TCA9535();
   TCA9535(uint8_t address, TwoWire *wire = &Wire);
 };
 
 
 // -- END OF FILE --
-

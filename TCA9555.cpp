@@ -20,7 +20,7 @@
 #define TCA9555_CONFIGURATION_PORT_0      0x06    //  pinMode
 #define TCA9555_CONFIGURATION_PORT_1      0x07
 
-
+TCA9555::TCA9555(){}
 TCA9555::TCA9555(uint8_t address, TwoWire *wire)
 {
   _address = address;
@@ -356,6 +356,7 @@ uint8_t TCA9555::readRegister(uint8_t reg)
 //
 //  TCA9535
 //
+TCA9535::TCA9535(){}
 TCA9535::TCA9535(uint8_t address, TwoWire *wire)
         :TCA9555(address, wire)
 {
