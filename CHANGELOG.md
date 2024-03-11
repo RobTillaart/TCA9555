@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [0.3.2] - 2024-03-11
-- Fix #18, pinMode in examples
+- Fix #18, pinMode in examples (kudos to nerdyscout)
 - update GitHub actions to v4
 - update readme.md
 - add datasheet to repo
