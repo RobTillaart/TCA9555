@@ -89,9 +89,10 @@ before calling **begin()**.
 
 #### I2C addresses
 
-Allowed addresses are 0x20..0x27 to be set with pin A0, A1, A2.
+The addresses for the TCA9555 and TCA9535 are 0x20..0x27.
+These are to be set with pin A0, A1, A2.
 
-The TCA9555 supports up to 400 kHz I2C.
+Both the TCA9555 and TCA9535 support up to 400 kHz I2C.
 
 
 #### I2C multiplexing
@@ -110,6 +111,12 @@ Also note that switching between channels will slow down other devices
 too if they are behind the multiplexer.
 
 - https://github.com/RobTillaart/TCA9548
+
+
+#### INT
+
+The interrupt pin is not supported by the library.
+Needs investigation (+ examples).
 
 
 ## Interface
@@ -194,19 +201,27 @@ Reading it will reset the flag to **TCA9555_OK**.
 - test all functionality
   - library is written without hardware
 
+
 #### Should
 
+- investigate INT = interrupt pin
 - investigate map INPUT_PULLUP on INPUT (pinMode ?)
 - investigate internal pull up etc.
 - investigate TCA9535 differences
   - pull up resistors
   - elaborate derived class
 - **setPolarity()** ==> **setPolarity1()** ? get idem.
+  - uniformity
+
 
 #### Could
 
 - rethink class hierarchy
   - TCA9535 has less functions so should be base class
+- add performance example for I2C.
+- investigate optimizing the "16 pins" interface.
+  - read /write multiple bytes in one call, is it supported?
+
 
 #### Wont (unless)
 

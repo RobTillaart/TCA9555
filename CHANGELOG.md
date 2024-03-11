@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fix #18, pinMode in examples (kudos to nerdyscout)
 - update GitHub actions to v4
 - update readme.md
+- add **TCA9555_interrupt.ino** to be verified
 - add datasheet to repo
 - minor edits
 
