@@ -29,6 +29,7 @@ void setup()
   for (int i = 0; i < 16; i++)
   {
     TCA.pinMode1(i, OUTPUT);
+    TCA.write1(i, LOW);
   }
 
 
