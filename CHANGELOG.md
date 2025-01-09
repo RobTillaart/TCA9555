@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.3.3] - 2025-01-09
+- sync with TCA9554
+- add keywords.txt
+- fix interrupt example
+
+
 ## [0.3.2] - 2024-03-11
 - Fix #18, pinMode in examples (kudos to nerdyscout)
 - update GitHub actions to v4
@@ -13,7 +19,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - add **TCA9555_interrupt.ino** to be verified
 - add datasheet to repo
 - minor edits
-
 
 ## [0.3.1] - 2024-01-06
 - minor edits
