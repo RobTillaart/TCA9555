@@ -88,7 +88,7 @@ bool TCA9555::pinMode1(uint8_t pin, uint8_t mode)
   else                val &= ~mask;
   if (val != prevVal)
   {
-    writeRegister(CONFREG, val);
+    return writeRegister(CONFREG, val);
   }
   _error = TCA9555_OK;
   return true;
@@ -115,7 +115,7 @@ bool TCA9555::write1(uint8_t pin, uint8_t value)
   else       val &= ~mask;
   if (val != prevVal)
   {
-    writeRegister(OPR, val);
+    return writeRegister(OPR, val);
   }
   _error = TCA9555_OK;
   return true;
@@ -168,7 +168,7 @@ bool TCA9555::setPolarity(uint8_t pin, uint8_t value)
   else               val &= ~mask;
   if (val != prevVal)
   {
-    writeRegister(POLREG, val);
+    return writeRegister(POLREG, val);
   }
   _error = TCA9555_OK;
   return true;
