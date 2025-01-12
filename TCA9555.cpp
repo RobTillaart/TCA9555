@@ -374,13 +374,13 @@ TCA9535::TCA9535(uint8_t address, TwoWire *wire)
   _type = 35;
 }
 
-PCA9555::TCA9555(uint8_t address, TwoWire *wire)
+PCA9555::PCA9555(uint8_t address, TwoWire *wire)
         :TCA9555(address, wire)
 {
   _type = 55;
 }
 
-PCA9535::TCA9535(uint8_t address, TwoWire *wire)
+PCA9535::PCA9535(uint8_t address, TwoWire *wire)
         :TCA9555(address, wire)
 {
   _type = 35;
