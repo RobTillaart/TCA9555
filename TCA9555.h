@@ -108,7 +108,7 @@ protected:
 
 /////////////////////////////////////////////////////////////////////////////
 //
-//  TCA9535 class which is just a wrapper (for now)
+//  DERIVED CLASSES TCA9535 PCA9555 PCA95535
 //
 class TCA9535 : public TCA9555
 {
