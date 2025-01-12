@@ -116,6 +116,18 @@ public:
   TCA9535(uint8_t address, TwoWire *wire = &Wire);
 };
 
+class PCA9555 : public TCA9555
+{
+public:
+  PCA9555(uint8_t address, TwoWire *wire = &Wire);
+};
+
+class PCA9535 : public TCA9555
+{
+public:
+  PCA9535(uint8_t address, TwoWire *wire = &Wire);
+};
+
 
 //  -- END OF FILE --
 

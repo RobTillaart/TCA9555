@@ -366,13 +366,26 @@ uint8_t TCA9555::readRegister(uint8_t reg)
 
 /////////////////////////////////////////////////////////////////////////////
 //
-//  TCA9535
+//  DERIVED CLASSES TCA9535 PCA9555 PCA9535
 //
 TCA9535::TCA9535(uint8_t address, TwoWire *wire)
         :TCA9555(address, wire)
 {
   _type = 35;
 }
+
+PCA9555::TCA9555(uint8_t address, TwoWire *wire)
+        :TCA9555(address, wire)
+{
+  _type = 55;
+}
+
+PCA9535::TCA9535(uint8_t address, TwoWire *wire)
+        :TCA9555(address, wire)
+{
+  _type = 35;
+}
+
 
 
 //  -- END OF FILE --

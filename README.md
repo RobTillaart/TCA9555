@@ -40,7 +40,9 @@ This allows one to create TCA9535 objects.
 
 ### Compatibles
 
-The library is expected to work for the PCA9554 / PCA9534 too. To be verified (feedback welcome).
+The library is expected to work for the PCA9555 / PCA9535 too for which derived classes are made. 
+
+To be verified (feedback welcome).
 
 
 ### Related
@@ -133,11 +135,13 @@ Check the datasheet for details
 #include "TCA9555.h"
 ```
 
-#### Constructor
+### Constructor
 
 - **TCA9555(uint8_t address, TwoWire \*wire = &Wire)** constructor, with default Wire interface. 
 Can be overruled with Wire0..WireN.
 - **TCA9535(uint8_t address, TwoWire \*wire = &Wire)** idem.
+- **PCA9555(uint8_t address, TwoWire \*wire = &Wire)** idem.
+- **PCA9535(uint8_t address, TwoWire \*wire = &Wire)** idem.
 - **uint8_t getType()** returns 35 or 55 depending on type.
 - **bool begin(uint8_t mode = INPUT, uint16_t mask = 0x0000)** initializes library.
 Sets all the pins to INPUT (default) or to OUTPUT. 
@@ -149,7 +153,7 @@ on I2C bus, returns false otherwise.
 - **uint8_t getAddress()** returns set address, (debugging).
 
 
-#### 1 pin interface
+### 1 pin interface
 
 - **bool pinMode1(uint8_t pin, uint8_t mode)** idem.
 If pin > 15 the function will return false.
@@ -217,7 +221,6 @@ Reading it will reset the flag to **TCA9555_OK**.
 - update documentation
 - buy TCA9555 / TCA9535 / PCA9555 / PCA9535
 - test all functionality
-  - library is written without hardware
 - keep TCA9554/TCA9555 in sync
 
 #### Should
@@ -231,16 +234,13 @@ Reading it will reset the flag to **TCA9555_OK**.
 - **setPolarity()** ==> **setPolarity1()** ? get idem.
   - uniformity
 
-
 #### Could
 
-- add PCA9555/35 as derived class.
 - rethink class hierarchy
   - TCA9535 has less functions so should be base class
 - add performance example for I2C.
 - investigate optimizing the "16 pins" interface.
   - read /write multiple bytes in one call, is it supported?
-
 
 #### Wont (unless)
 
