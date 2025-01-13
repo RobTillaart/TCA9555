@@ -40,9 +40,18 @@ This allows one to create TCA9535 objects.
 
 ### Compatibles
 
-The library is expected to work for the PCA9555 / PCA9535 too for which derived classes are made. 
+The library is expected to work for the PCA9555 / PCA9535 too for which derived 
+classes are made.
 
-To be verified (feedback welcome).
+|    type   | Notes  |
+|:---------:|:------:|
+|  TCA9555  |  confirmed
+|  TCA9535  |
+|  PCA9555  |
+|  PCA9535  |
+|  CAT9555  |  confirmed (see #24)
+
+Feedback of working types is welcome.
 
 
 ### Related
@@ -52,14 +61,14 @@ To be verified (feedback welcome).
 - https://github.com/RobTillaart/MCP23017_RT
 - https://github.com/RobTillaart/MCP23S17  (SPI)
 - https://github.com/RobTillaart/PCF8575
-- https://github.com/RobTillaart/PCA9555
+- https://github.com/RobTillaart/TCA9555
 
 8 bit port expanders
 
 - https://github.com/RobTillaart/MCP23008
 - https://github.com/RobTillaart/MCP23S08  (SPI)
 - https://github.com/RobTillaart/PCF8574
-- https://github.com/RobTillaart/PCA9554
+- https://github.com/RobTillaart/TCA9554
 
 
 ### 0.3.0 Breaking change
