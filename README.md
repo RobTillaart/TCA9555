@@ -60,6 +60,7 @@ Feedback of working types is welcome.
 
 - https://github.com/RobTillaart/MCP23017_RT
 - https://github.com/RobTillaart/MCP23S17  (SPI)
+- https://github.com/RobTillaart/PCA9671
 - https://github.com/RobTillaart/PCF8575
 - https://github.com/RobTillaart/TCA9555
 
@@ -151,6 +152,7 @@ Can be overruled with Wire0..WireN.
 - **TCA9535(uint8_t address, TwoWire \*wire = &Wire)** idem.
 - **PCA9555(uint8_t address, TwoWire \*wire = &Wire)** idem.
 - **PCA9535(uint8_t address, TwoWire \*wire = &Wire)** idem.
+- **CAT9555(uint8_t address, TwoWire \*wire = &Wire)** idem.
 - **uint8_t getType()** returns 35 or 55 depending on type.
 - **bool begin(uint8_t mode = INPUT, uint16_t mask = 0x0000)** initializes library.
 Sets all the pins to INPUT (default) or to OUTPUT. 
