@@ -8,7 +8,7 @@
 #include "TCA9555.h"
 
 
-TCA9555 TCA(0x27);
+TCA9555 TCA(0x20);
 
 
 void setup()
@@ -25,6 +25,8 @@ void setup()
 
   Serial.println("Set pinMode16 INPUT");
   TCA.pinMode16(0xFFFF);
+  //  invert polarity
+  TCA.setPolarity16(0xFFFF);
 
 
   Serial.println("TEST read1(pin)");
@@ -32,10 +34,29 @@ void setup()
   {
     int val = TCA.read1(pin);
     Serial.print(val);
-    Serial.print('\t');
+    Serial.print(' ');
   }
   Serial.println();
+  Serial.println();
+
+
+  Serial.println("TEST read8(port)");
+  for (int port = 0; port < 2; port++)
+  {
+    int val = TCA.read8(port);
+    Serial.print(val, HEX);
+    Serial.print(' ');
+  }
+  Serial.println();
+  Serial.println();
+
+
+  Serial.println("TEST read16()");
+  int val = TCA.read16();
+  Serial.print(val, HEX);
+  Serial.println();
   Serial.println("\ndone...");
+
 }
 
 
@@ -45,4 +66,3 @@ void loop()
 
 
 //  -- END OF FILE --
-
