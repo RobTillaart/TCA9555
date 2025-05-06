@@ -7,7 +7,7 @@
 
 #include "TCA9555.h"
 
-
+//  adjust address if needed
 TCA9555 TCA(0x20);
 
 
@@ -25,7 +25,43 @@ void setup()
 
   Serial.println("Set pinMode16 INPUT");
   TCA.pinMode16(0xFFFF);
-  //  invert polarity
+
+  Serial.println("Normal polarity")
+  TCA.setPolarity16(0x0000);
+
+
+  Serial.println("TEST read1(pin)");
+  for (int pin = 0; pin < 16; pin++)
+  {
+    int val = TCA.read1(pin);
+    Serial.print(val);
+    Serial.print(' ');
+  }
+  Serial.println();
+  Serial.println();
+
+
+  Serial.println("TEST read8(port)");
+  for (int port = 0; port < 2; port++)
+  {
+    int val = TCA.read8(port);
+    Serial.print(val, HEX);
+    Serial.print(' ');
+  }
+  Serial.println();
+  Serial.println();
+
+
+  Serial.println("TEST read16()");
+  int val = TCA.read16();
+  Serial.print(val, HEX);
+  Serial.println();
+  Serial.println();
+  Serial.println();
+
+//////////////////////////////////////////////
+
+  Serial.println("Inverted polarity")
   TCA.setPolarity16(0xFFFF);
 
 

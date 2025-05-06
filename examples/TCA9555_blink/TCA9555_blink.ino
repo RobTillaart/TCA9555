@@ -1,13 +1,13 @@
 //
 //    FILE: TCA9555_blink.ino
 //  AUTHOR: Rob Tillaart
-// PURPOSE: test TCA9555 library
+// PURPOSE: quick test TCA9555
 //     URL: https://github.com/RobTillaart/TCA9555
 
 
 #include "TCA9555.h"
 
-
+//  adjust address if needed
 TCA9555 TCA(0x20);
 
 

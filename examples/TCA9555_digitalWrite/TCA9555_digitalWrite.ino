@@ -7,7 +7,7 @@
 
 #include "TCA9555.h"
 
-
+//  adjust address if needed
 TCA9555 TCA(0x20);
 
 

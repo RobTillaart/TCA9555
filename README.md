@@ -16,14 +16,16 @@ Arduino library for TCA9555 16 channel I2C port expander.
 
 ## Description
 
-This library gives easy control over the 16 pins of a TCA9555 chip.
+This library gives easy control over the 16 pins of a TCA9555 device.
 
 The pins can be used for INPUT (default) and OUTPUT, and allow to set polarity.
 
 The pins can be set per single pin, or with a mask to set either 8 or 16 pins
 in one call.
 Note that for the 16 bit interface settings are not perfectly simultaneous 
-as the 16 bit interface does in fact 2 calls to the 8 bit interface.  
+as the 16 bit interface does in fact 2 calls to the 8 bit interface.
+
+The TCA9555 has an interrupt pin, however the library does not support this.
 
 
 ### TCA9535
@@ -131,11 +133,13 @@ too if they are behind the multiplexer.
 
 - https://github.com/RobTillaart/TCA9548
 
-
 ### INT pin interrupts
 
 The interrupt pin is not supported by the library.
-Needs investigation (+ examples).
+There is an example showing how interrupts can be used.
+
+Note that the device generates interrupts on **CHANGING** pins,
+so no option to select falling or rising.
 
 
 ## Interface
@@ -231,13 +235,15 @@ Reading it will reset the flag to **TCA9555_OK**.
 #### Must
 
 - update documentation
-- buy TCA9555 / TCA9535 / PCA9555 / PCA9535
-- test all functionality
 - keep TCA9554/TCA9555 in sync
 
 #### Should
 
-- investigate INT = interrupt pin
+- investigate optimizing the "16 pins" interface.
+  - read /write multiple bytes in one call, is it supported? (YES!)
+  - expected gain ~33%
+- **setPolarity()** ==> **setPolarity1()** ? get idem.
+  - uniformity
 - investigate map INPUT_PULLUP on INPUT (pinMode ?)
 - investigate internal pull up etc.
 - investigate TCA9535 differences
@@ -246,13 +252,13 @@ Reading it will reset the flag to **TCA9555_OK**.
 - **setPolarity()** ==> **setPolarity1()** ? get idem.
   - uniformity
 
+
 #### Could
 
 - rethink class hierarchy
   - TCA9535 has less functions so should be base class
 - add performance example for I2C.
-- investigate optimizing the "16 pins" interface.
-  - read /write multiple bytes in one call, is it supported?
+- buy TCA9535 / PCA9555 / PCA9535 to test
 
 #### Wont (unless)
 

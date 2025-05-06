@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [0.4.3] - 2025-05-05
-- improved examples after HW test
+- updated examples after HW test
 - add TCA9555_blink.ino
 - minor edits 
 
