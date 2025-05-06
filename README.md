@@ -249,9 +249,6 @@ Reading it will reset the flag to **TCA9555_OK**.
 - investigate TCA9535 differences
   - pull up resistors
   - elaborate derived class
-- **setPolarity()** ==> **setPolarity1()** ? get idem.
-  - uniformity
-
 
 #### Could
 
